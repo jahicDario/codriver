@@ -23,7 +23,7 @@
                        <li *ngIf="isLoggedIn$ | async"><a routerLink="/createmalfunction">Kreiraj kvar</a></li>
                        <li *ngIf="isLoggedIn$ | async"><a routerLink="/malfunction">Kvarovi</a></li>
                        <li *ngIf="isLoggedIn$ | async"><a routerLink="/services">Servisi</a></li> 
-                       <li *ngIf="!(isLoggedIn$ | async)" style="float:right;"><a (click)="login()">Uloguj se</a></li> 
+                       <li *ngIf="!(isLoggedIn$ | async)" style="float:right;"><a routerLink="/login">Uloguj se</a></li> 
                        <li *ngIf="(isLoggedIn$ | async)" style="float:right;"><a (click)="logout()">Izloguj se</a></li> 
                        <li *ngIf="(isLoggedIn$ | async)"  style="float:right;"><a routerLink="/profile">Profil </a></li>                                              
                                              
