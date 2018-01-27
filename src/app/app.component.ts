@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WebsocketService } from './components/wsprovider.service';
 import { ChatService } from './components/wsconsumer.service';
 import { NotificationsService } from 'angular2-notifications';
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { DriverService } from './components/driver.service';
 
 
 @Component({
@@ -13,24 +17,18 @@ import { NotificationsService } from 'angular2-notifications';
 })
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-    loggedin: boolean;
-    token: string;
+    isLoggedIn$: Observable<boolean>;
+     
     public options = {
         position: ["bottom", "left"],
         timeOut: 5000,
         lastOnBottom: true
     }
 
-    constructor(private notifService: NotificationsService, private chatService: ChatService) {
-        this.token = localStorage.getItem("access_token");
-        if (this.token) {
-            this.loggedin = true;
-        } else {
-            this.loggedin = false;
-        }
-
+    constructor( private driverService: DriverService, private notifService: NotificationsService, private chatService: ChatService) {
+     
         chatService.messages.subscribe(msg => {
             console.log(msg.text);
             let tip = localStorage.getItem("user_type");
@@ -49,4 +47,11 @@ export class AppComponent {
             }
         });
     }
+    ngOnInit(){
+      this.isLoggedIn$ = this.driverService.isLoggedIn;
+    }
+    logout(){
+        this.driverService.logout();
+    }
+
 }

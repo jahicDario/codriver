@@ -19,13 +19,13 @@
                <!-- Collect the nav links, forms, and other content for toggling -->
                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                    <ul class="nav navbar-nav" style="width:90%">
-                       <li><a routerLink="/about">O nama </a></li>                      
-                       <li><a routerLink="/createmalfunction">Kreiraj kvar</a></li>
-                       <li><a routerLink="/malfunction">Kvarovi</a></li>
-                       <li><a routerLink="/services">Servisi</a></li> 
-                       <li *ngIf="!loggedin" style="float:right;"><a routerLink="/login">Uloguj se</a></li> 
-                       <li *ngIf="loggedin" style="float:right;"><a routerLink="/logout">Izloguj se</a></li> 
-                        <li style="float:right;"><a routerLink="/profile">Profil </a></li>                                              
+                       <li><a routerLink="/about">O nama </a></li>              
+                       <li *ngIf="isLoggedIn$ | async"><a routerLink="/createmalfunction">Kreiraj kvar</a></li>
+                       <li *ngIf="isLoggedIn$ | async"><a routerLink="/malfunction">Kvarovi</a></li>
+                       <li *ngIf="isLoggedIn$ | async"><a routerLink="/services">Servisi</a></li> 
+                       <li *ngIf="!(isLoggedIn$ | async)" style="float:right;"><a (click)="login()">Uloguj se</a></li> 
+                       <li *ngIf="(isLoggedIn$ | async)" style="float:right;"><a (click)="logout()">Izloguj se</a></li> 
+                       <li *ngIf="(isLoggedIn$ | async)"  style="float:right;"><a routerLink="/profile">Profil </a></li>                                              
                                              
                    </ul>
                </div>
@@ -33,4 +33,5 @@
            </div>
            <!-- /.container -->
        </nav>
+       <div> {{ isLoggedIn$ | async }} </div>
    <router-outlet></router-outlet>

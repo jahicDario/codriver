@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {DriverService} from './driver.service';
 import { User } from './user';
 
+import { Router } from '@angular/router';
+
+
 @Component({
     moduleId: module.id,
     selector: 'login',
@@ -15,22 +18,19 @@ export class LoginComponent  {
     password: string;
     user: User;
 
-    constructor(private driverService: DriverService){
+    constructor(private router: Router, private driverService: DriverService){
     }
 
     public login(){
-        this.driverService.login(this.username, this.password).subscribe(
-            data => {
-                localStorage.setItem("access_token", data.access_token);
-            },
-            err => {
-                console.log(err);
-            }
-        );
-        console.log(localStorage.getItem("access_token"));
-        this.fetchProfileData();
-
+        this.driverService.login(this.username, this.password);
+        // console.log(localStorage.getItem("access_token"));
+        // this.fetchProfileData();
     }
+
+    public logout(){
+        this.driverService.logout();
+    }
+
     public fetchProfileData(){
         this.driverService.fetchProfileData().subscribe(
             data => {
@@ -38,6 +38,5 @@ export class LoginComponent  {
                 console.log(data);
               }
         );
-        // console.log(localStorage.getItem("user_type"));
     }
 }

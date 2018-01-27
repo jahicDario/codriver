@@ -14,7 +14,6 @@ import { DriverSignupComponent } from './components/driver-signup.component';
 import { LoginComponent } from './components/login.component';
 import { ServicesComponent } from './components/services.component';
 import { CreatemalfunctionComponent } from './components/createmalfunction.component';
-import { LogoutComponent } from './components/logout.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SimpleNotificationsModule } from 'angular2-notifications';
@@ -30,7 +29,7 @@ import { routing } from './app.routing';
 @NgModule({
   imports: [BrowserModule, routing, HttpClientModule, FormsModule, BrowserAnimationsModule,
     SimpleNotificationsModule.forRoot()],
-  declarations: [LogoutComponent, ServicesComponent, CreatemalfunctionComponent, LoginComponent,
+  declarations: [ServicesComponent, CreatemalfunctionComponent, LoginComponent,
    AppComponent, UserComponent, AboutComponent, HomeComponent,
     MalfunctionComponent, SignedUpComponent, SignupComponent, DriverSignupComponent],
   bootstrap: [AppComponent],

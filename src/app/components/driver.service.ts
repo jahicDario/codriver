@@ -1,7 +1,12 @@
-import { Injectable }    from '@angular/core';
+import { Injectable}    from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { User } from './user'
+import { User } from './user';
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import { Router } from '@angular/router';
+
 
 interface AuthResponse{
     access_token: string;
@@ -9,12 +14,26 @@ interface AuthResponse{
 
 
 @Injectable()
-export class DriverService {
+export class DriverService{
  
 //    private headers = new HttpHeaders({'Content-Type': 'application/json'});
     CONFIG_URL: string = "http://suvozac.herokuapp.com/";
     CLIENT_ID: string = "afOCVN8RvtPB3EwNjhCchj2m43JcVTKxnd0UJSTG";
-    constructor(private http: HttpClient){
+
+    private loggedIn = new BehaviorSubject<boolean>(false);
+    token: string;
+
+
+
+    constructor(private router: Router, private http: HttpClient){
+        if(localStorage.getItem('access_token')){
+            this.loggedIn.next(true);
+        }
+    }
+
+
+    get isLoggedIn(){
+        return this.loggedIn.asObservable();
     }
 
     registerDriver(username:string, email:string, password: string){
@@ -47,20 +66,33 @@ export class DriverService {
     }
 
     
-    login(username:string, password: string) : Observable<AuthResponse>{
+    login(username:string, password: string){
         var parametri =  "username=" + username + "&password=" + password + "&grant_type=password" +
         "&client_id=" + this.CLIENT_ID;
+          
+         this.http.post<AuthResponse>(this.CONFIG_URL + "o/token/", parametri,
+        {headers: new HttpHeaders('Content-Type: application/x-www-form-urlencoded')}).subscribe(
+            data => {
+                localStorage.setItem("access_token", data.access_token);
+                this.loggedIn.next(true);
+                this.router.navigate(['/']);
+                console.log("true je sad");
+            },
+            err => {
+                console.log(err);
+            }
         
-        var token;
-        
-        return this.http.post<AuthResponse>(this.CONFIG_URL + "o/token/", parametri,
-        {headers: new HttpHeaders('Content-Type: application/x-www-form-urlencoded')});
+        );
+    }
+    logout(){
+        localStorage.removeItem("access_token");
+        this.loggedIn.next(false);
+        this.router.navigate(['/login']);
+
     }
     fetchProfileData() : Observable<User>{
         return this.http.get<User>(this.CONFIG_URL + "me/");
     }
-    
-
 //   constructor(private http: Http) { }
  
 //   getHeroes(): Promise<Hero[]> {

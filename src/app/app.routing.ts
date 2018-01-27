@@ -11,12 +11,11 @@ import { DriverSignupComponent } from './components/driver-signup.component';
 import { LoginComponent } from './components/login.component';
 import { ServicesComponent } from './components/services.component';
 import { CreatemalfunctionComponent } from './components/createmalfunction.component';
-import  {LogoutComponent} from './components/logout.component';
 
 const appRoutes: Routes = [
     {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
     },
     {
         path: 'about',
@@ -24,11 +23,11 @@ const appRoutes: Routes = [
     },
     {
         path: 'profile',
-        component: UserComponent
+        component: UserComponent,
     },
     {
         path: 'malfunction',
-        component: MalfunctionComponent
+        component: MalfunctionComponent,
     },
     {
         path: 'driver-signup',
@@ -43,16 +42,12 @@ const appRoutes: Routes = [
         component: LoginComponent
     },
     {
-        path: 'logout',
-        component: LogoutComponent
-    },
-    {
         path: 'services',
-        component: ServicesComponent
+        component: ServicesComponent,
     },
     {
         path: 'createmalfunction',
-        component: CreatemalfunctionComponent
+        component: CreatemalfunctionComponent,
     }
 ];
 
