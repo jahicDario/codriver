@@ -20,20 +20,20 @@ export class DriverService{
     CONFIG_URL: string = "http://suvozac.herokuapp.com/";
     CLIENT_ID: string = "afOCVN8RvtPB3EwNjhCchj2m43JcVTKxnd0UJSTG";
 
-    private loggedIn = new BehaviorSubject<boolean>(false);
+    private static loggedIn = new BehaviorSubject<boolean>(false);
     token: string;
 
 
 
     constructor(private router: Router, private http: HttpClient){
         if(localStorage.getItem('access_token')){
-            this.loggedIn.next(true);
+            DriverService.loggedIn.next(true);
         }
     }
 
 
     get isLoggedIn(){
-        return this.loggedIn.asObservable();
+        return DriverService.loggedIn.asObservable();
     }
 
     registerDriver(username:string, email:string, password: string){
@@ -74,7 +74,7 @@ export class DriverService{
         {headers: new HttpHeaders('Content-Type: application/x-www-form-urlencoded')}).subscribe(
             data => {
                 localStorage.setItem("access_token", data.access_token);
-                this.loggedIn.next(true);
+                 DriverService.loggedIn.next(true);
                 this.router.navigate(['/']);
                 console.log("true je sad");
             },
@@ -86,7 +86,7 @@ export class DriverService{
     }
     logout(){
         localStorage.removeItem("access_token");
-        this.loggedIn.next(false);
+         DriverService.loggedIn.next(false);
         this.router.navigate(['/login']);
 
     }
