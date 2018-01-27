@@ -1,0 +1,53 @@
+/*
+HTML 5 Template Name: 
+File: About Us - 6 CSS
+Author: OS Templates
+Author URI: http://www.os-templates.com/
+Licence: <a href="http://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+#about-us{display:block; width:100%; line-height:1.6em;}
+
+#about-us #statements{margin-bottom:50px; padding:20px; color:inherit; background-color:#EFEFEF;}
+#about-us #statements .imgl{background-color:#FFFFFF; margin:0;}
+#about-us #statements .fl_right{width:75%;}
+#about-us #statements .fl_right blockquote{position:relative; margin:0; padding:20px 0 0 0;}
+#about-us #statements .fl_right blockquote p{margin:0; padding:0 0 0 60px; font-size:22px; font-style:italic; text-align:justify; line-height:1.6em;}
+#about-us #statements .fl_right blockquote p span{position:absolute; top:0; left:10px; font-size:120px; line-height:.8em; color:#FFF; background-color:transparent;}
+
+#about-us #tabcontainer{display:block; width:100%; margin-bottom:50px; padding:50px 0; border:solid #CCCCCC; border-width:1px 0;}
+#tabcontainer div ul#tabnav{display:block; margin:0; padding:0; list-style:none; text-transform:uppercase;}
+#tabcontainer div ul#tabnav li{margin:15px 0 0 0; padding:0;}
+#tabcontainer div ul#tabnav li:first-child{margin-top:0;}
+#tabcontainer div ul#tabnav li img{margin-right:10px;}
+
+/* --jQuery Specific-- */
+
+#container .ui-tabs .ui-tabs-nav li a{display:block; margin:0; padding:10px 0; color:#333333 !important; background-color:transparent; border-bottom:1px solid #CCCCCC;}
+#container .ui-tabs .ui-tabs-nav li a:hover, #container .ui-tabs .ui-tabs-nav li.ui-tabs-active a{border-color:#333333;}
+#container .ui-tabs .ui-tabs-nav li.ui-tabs-active a{cursor:default;}
+
+#about-us #tabcontainer div .tabcontainer{margin:0; padding:10px 0 10px 20px; border-left:1px solid #CCCCCC;}
+#about-us #tabcontainer div .tabcontainer h2{}
+#about-us #tabcontainer div .tabcontainer p{}
+
+#about-us #team{margin-bottom:0;}
+#about-us #team h2{}
+#about-us #team ul{margin:0; padding:0; list-style:none;}
+#about-us #team ul li{margin-bottom:20px;}
+#about-us #team ul li.odd{margin-left:0; clear:left;}
+#about-us #team ul li.even{}
+#about-us #team ul li div{}
+#about-us #team ul li div:first-child{}
+#about-us #team ul li div img{padding:4px; border:1px solid #CCCCCC;}
+#about-us #team ul li p{margin:15px 0 0 0; padding:0;}
+#about-us #team ul li p:first-child{}
+#about-us #team ul li .team_name{font-weight:bold;}
+#about-us #team ul li .team_title{margin:0; font-size:11px; line-height:normal;}
+#about-us #team ul li .team_description{}
+
+#about-us #team ul ul{margin-top:20px;}
+#about-us #team ul ul li{display:inline; margin:0 0 0 6px; background:none;}
+#about-us #team ul ul li:first-child{margin-left:0;}
+#about-us #team ul ul li a{}
+#about-us #team ul ul li a img{padding:0; border:none;}

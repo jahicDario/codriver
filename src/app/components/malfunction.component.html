@@ -1,0 +1,68 @@
+
+<div style="margin-top:60px">
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Kvarovi
+        <small class="small-class">Prijavite se za kvarove koje želite da preuzmete</small>
+      </h1>
+
+      <!-- Project One -->
+
+
+
+      <div class="row" *ngFor="let mf of malfunctions; let i = index">
+        
+        <div class="col-md-12">
+          <h3>{{i+1}}. Kvar</h3>
+          <p>{{mf.mf_desc}}</p>
+          <a class="btn btn-primary" href="#">Prijavi se za kvar</a>
+        </div>
+         <hr>
+      </div>
+      <!-- /.row -->
+
+     
+
+      <!-- Pagination -->
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; INIT 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/popper.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+</div>

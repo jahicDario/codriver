@@ -1,0 +1,42 @@
+<div *ngIf="!created" class="container">
+  <form id="contact" action="" method="post" #f="ngForm">
+    <h3>Kreiraj novi kvar</h3>
+    <h4>Kvar koji kreiraš prikazaće se servisima u datom regionu</h4>
+    <!--Vehicle-->
+    <!--<input placeholder="Vozilo" name="vehicle" [(ngModel)]="vehicle" type="text" tabindex="1" required autofocus> -->
+    <p>Tip vozila</p>
+    <select class="form-control" required [(ngModel)]="vehicle" name="vehicle">
+          <option  *ngFor="let vehicle of vehicles" name="vehicle" [ngValue]="vehicle">{{vehicle.name}}</option>  
+        </select>
+    <fieldset>
+      <!--Mf type-->
+      <!--<input placeholder="Tip kvara" name="mf_type"  [(ngModel)]="mf_type" type="text" tabindex="2" required>-->
+      <p>Tip kvara</p>
+      <select class="form-control" required name="mf_type" [(ngModel)]="mf_type">
+          <option *ngFor="let mf_type of mf_types" name="mf_type" [ngValue]="mf_type">{{mf_type.name}}</option>  
+        </select>
+    </fieldset>
+    <fieldset>
+      <!--Region-->
+      <!--<input placeholder="Region" name="region"  [(ngModel)]="region" type="text" tabindex="3" required>-->
+      <p>Region</p>
+      <select class="form-control" name="region" [(ngModel)]="region">
+          <option *ngFor="let region of regions" name="region" [ngValue]="region">{{region.name}}</option>  
+        </select>
+    </fieldset>
+    <fieldset>
+      <!--Mf desc-->
+      <input placeholder="Opis kvara" name="mf_desc" [(ngModel)]="mf_desc" type="text" tabindex="4" required>
+    </fieldset>
+    <fieldset>
+      <!-- <input type="submit" (click)="returnResponse();" name="createmalfunction_submit" value="Kreiraj kvar"  />   -->
+      <input type="submit" (click)="createMalfunction();returnResponse();" 
+      name="createmalfunction_submit" value="Kreiraj kvar"
+      />
+    </fieldset>
+  </form>
+</div>
+
+<div *ngIf="created" class="created-malfunction">
+  <h1>Uspešno ste kreirali kvar.</h1>
+</div>
