@@ -23,20 +23,5 @@ export class LoginComponent  {
 
     public login(){
         this.driverService.login(this.username, this.password);
-        // console.log(localStorage.getItem("access_token"));
-        // this.fetchProfileData();
-    }
-
-    public logout(){
-        this.driverService.logout();
-    }
-
-    public fetchProfileData(){
-        this.driverService.fetchProfileData().subscribe(
-            data => {
-                localStorage.setItem("user_type", data.user_type);
-                console.log(data);
-              }
-        );
     }
 }
